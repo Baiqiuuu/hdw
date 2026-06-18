@@ -40,7 +40,16 @@ export default function ImaginePanel() {
         }),
       });
 
-      const data = await response.json();
+      const raw = await response.text();
+      let data;
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        if (response.status === 504 || raw.includes('FUNCTION_INVOCATION_TIMEOUT')) {
+          throw new Error('生成超时，请减少建材数量或稍后重试');
+        }
+        throw new Error('服务器返回异常，请稍后重试');
+      }
 
       if (!response.ok) {
         throw new Error(data.error || data.hint || '生成失败');

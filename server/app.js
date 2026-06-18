@@ -173,16 +173,19 @@ app.post('/api/imagine', async (req, res) => {
       .filter(Boolean)
       .slice(0, 4);
 
+    // Vercel Hobby 函数最长 60s；images.edit + 拉取参考图易超时，线上仅用文本 prompt 生成
+    const useImageEdit = imageUrls.length > 0 && !process.env.VERCEL;
+
     let result;
 
     const generateOptions = {
       model: 'gpt-image-1',
       prompt,
-      size: '1536x1024',
-      quality: 'high',
+      size: process.env.VERCEL ? '1024x1024' : '1536x1024',
+      quality: process.env.VERCEL ? 'medium' : 'high',
     };
 
-    if (imageUrls.length > 0) {
+    if (useImageEdit) {
       try {
         const imageFiles = await Promise.all(
           imageUrls.map(async (url, i) => {
