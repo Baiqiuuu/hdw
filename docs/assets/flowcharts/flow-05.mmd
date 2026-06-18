@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph CN["中国产业带"]
+        F1[佛山瓷砖]
+        F2[湖州地板]
+        F3[南安卫浴]
+        F4[中山灯具]
+    end
+    subgraph Log["跨境链路"]
+        FF[货代 NVOCC]
+        CC[清关 Broker]
+        WH[LA 中央仓]
+    end
+    subgraph US["美国履约"]
+        D2C[HDW 商城 D2C]
+        B2B[B2B 项目配送]
+        DS[Dropship 直发少数 SKU]
+    end
+    F1 & F2 & F3 & F4 --> FF --> CC --> WH
+    WH --> D2C & B2B
+    F1 & F2 -.->|部分大件 OEM 直发| DS

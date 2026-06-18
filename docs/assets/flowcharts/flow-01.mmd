@@ -1,0 +1,30 @@
+flowchart TB
+    subgraph P0["Phase 0 · 0–12月"]
+        LA["南加州 LA/OC/SGV"]
+    end
+    subgraph P1["Phase 1 · 12–24月"]
+        SF["北加州 湾区"]
+        SD["圣地亚哥"]
+        LV["拉斯维加斯华人圈"]
+    end
+    subgraph P2["Phase 2 · 24–36月"]
+        SEA["西雅图"]
+        TX["休斯顿/达拉斯"]
+        NY["纽约/新泽西法拉盛"]
+        BC["温哥华/多伦多"]
+    end
+    subgraph P3["Phase 3 · 36月+"]
+        US["全美 Top 20 亚裔 MSAs"]
+        CN["跨境反向：国内高净值定制"]
+    end
+    LA --> SF
+    LA --> SD
+    LA --> LV
+    SF --> SEA
+    SF --> TX
+    SF --> NY
+    NY --> BC
+    SEA --> US
+    TX --> US
+    NY --> US
+    US --> CN

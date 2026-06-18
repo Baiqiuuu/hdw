@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph Client["浏览器 / 移动端 Web"]
+        UI[React 商城 UI]
+        AI[ImaginePanel AI 样板间]
+        ADM[AdminPanel 商城管理]
+    end
+    subgraph API["Express API :3001"]
+        P["/api/products"]
+        I["/api/imagine"]
+        A["/api/admin/*"]
+        U["/uploads 静态文件"]
+    end
+    subgraph External["外部服务"]
+        OAI[OpenAI gpt-image-1]
+        CDN[hdwbuild.com CDN]
+    end
+    subgraph Data["数据"]
+        JSON[products.json]
+        IMG[server/uploads]
+    end
+    UI --> P
+    AI --> I
+    ADM --> A
+    I --> OAI
+    P --> JSON
+    A --> JSON
+    A --> IMG
+    UI --> CDN

@@ -1,0 +1,7 @@
+flowchart LR
+    U[用户] -->|点击 ✨| B[imagineBoard 最多6种]
+    B --> P[ImaginePanel]
+    P -->|房间+风格| API[POST /api/imagine]
+    API --> OAI[OpenAI gpt-image-1]
+    OAI --> IMG[效果图]
+    IMG --> U

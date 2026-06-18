@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant GC as 承包商
+    participant HDW as HDW 平台
+    participant WH as 仓库/3PL
+    participant SUP as 国内供应商
+
+    GC->>HDW: 上传项目清单/BOM
+    HDW->>GC: 24h 中文报价单
+    GC->>HDW: PO 确认 + 定金
+    alt 本地有现货
+        HDW->>WH: 拣货
+        WH->>GC: 工地配送
+    else 国内订货
+        HDW->>SUP: 生产/排柜
+        SUP->>HDW: 海运至 LA 仓
+        HDW->>GC: 分批配送
+    end
+    HDW->>GC: 发票 + 售后

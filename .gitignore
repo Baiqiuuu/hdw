@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+server/uploads/
+server/data/products.json
+docs/*.pdf
+docs/*.docx
+docs/_export_work.md
+docs/__pycache__/
+docs/assets/flowcharts/*.mmd
+.vercel
+.vscode/
